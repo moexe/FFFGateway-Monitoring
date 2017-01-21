@@ -1,0 +1,149 @@
+/* CSS Document */
+
+html {
+#        width:100%;
+}
+
+body {
+        background-color:#8db5cb;
+        text-align:left;
+        font-family:Arial, Helvetica, sans-serif;
+#       font-family:Verdana, sans-serif;
+        font-size:small;
+        color:#454545;
+        background-repeat:repeat-x;
+}
+
+#wrapper {
+        margin:0 auto;
+
+
+}
+
+#kopf {
+
+        width:100%;
+}
+#kopf img {
+        width:100%;
+}
+
+#bodybox {
+        float:left;
+        background-color:#ffffff;
+        width:100%;
+
+
+#       background-image:url('img/bg_bodybox.jpg');
+}
+
+#content {
+
+        margin-right:2.5em;
+        margin-left:2.5em;
+        margin-top:1em;
+        padding-bottom:1em;
+}
+
+#fuss {
+        float:left;
+        width:100%;
+#       height:5em;
+        font-size:1.5em;
+        font-weight:bold;
+        background-color:#D3ECED;
+        text-align:center;
+
+}
+#fuss td {
+#       height:3em;
+        vertical-align:middle;
+        }
+
+div.imgrechts {
+        float:right;
+        text-align:center;
+        margin-left:10px;
+        margin-bottom:10px;
+        width:30%;
+}
+
+div.imgrechts img {
+        border:1px solid #bbbbbb;
+        width:100%;
+}
+
+div.imgrechts p {
+        text-align:center;
+        margin:12px;
+        padding:0px;
+        font-size:11px;
+        color:#454545;
+}
+div.ampel {
+	float:left;
+	width:100%;
+        max-width:550px;
+}
+
+div.ampel img {
+	width:2em;
+}
+div.ampel table {
+        width:100%;
+}
+	
+div.mrtg {
+        float:left;
+        width:100%;
+        max-width:550px;
+}
+div.mrtg img {
+        width:100%
+}
+
+
+@media only screen and (max-width: 600px) {
+
+#kopf {
+        display:none;
+
+}
+#content {
+        float:left;
+        width:95%;
+        margin-right:0.5em;
+        margin-left:0.5em;
+        margin-top:0.5em;
+        padding-bottom:1em;
+}
+
+div.ampel {
+        float:left;
+	width:100%;
+	max-width:550px;
+}
+
+div.ampel img {
+        width:2em;
+}
+
+div.ampel table {
+	width:100%;
+}
+div.mrtg {
+        float:left;
+        width:100%;
+        max-width:550px;
+        margin-left:0px;
+}
+
+div.mrtg img {
+	width:100%
+}
+
+}
+
+
+
+
