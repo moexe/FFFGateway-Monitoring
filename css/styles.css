@@ -7,7 +7,7 @@
     height: 100%;
 }
 header {
-    background-color: #000;
+    background-color: rgb(128, 51, 0);
 }
 header:after {
     content: " ";
@@ -29,7 +29,7 @@ h1 {
 .main .dev-output pre {
     overflow: auto;
     max-height: 500px;
-    background-color: #EBF4FD;
+    background-color: #FFFFFF;
     padding: 0 1em 1em;
 }
 .brand {

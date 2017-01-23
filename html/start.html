@@ -29,57 +29,60 @@ echo "<tr><td>DHCP:</td><td>Leases in use: <b>$leases</b></td><td><img src=img/$
 </table>
 
 <hr />
-<b>Aktuelle default Route table fff:</b><br>
+
 <?php
-$route = shell_exec('ip r s table fff | head -1');
-echo "$route<br><br>";
-
 $l2tp = shell_exec('ip l | grep -c l2tp');
-echo "Anzahl der l2tp Tunnel: <b>$l2tp</b><br><br>";
-$gwsel = shell_exec('sudo batctl gw');
-echo "<b>Gateway-selection:</b><br>";
-echo "$gwsel<br><br>";
+echo "<b>Anzahl der l2tp Tunnel</b><br>has-sued: <b>$l2tp</b><br><br>";
 
-echo "<b>Die anderen GW in der Hood</b><br>";
-$other = shell_exec('sudo batctl gwl | grep MBit | tr -s " " | cut -f 2,3,8 -d" "');
-$othergw = explode(PHP_EOL, $other);
-for($i = 0; $i < count($othergw); ++$i) {
-	echo "$othergw[$i]<br>";
+$gwselsued = file_get_contents('http://10.50.60.22/bat0.dat');
+$gwselhas = file_get_contents('http://10.50.60.22/bat2.dat');
+
+echo "<b>Gatewayselection Hood has:</b><br>";
+$gwsel_has = explode(PHP_EOL, $gwselhas);
+for($i = 0; $i < count($gwsel_has); ++$i) {
+	 echo "$gwsel_has[$i]<br>";
+}
+
+echo "<b>Gatewayselection Hood has-sued</b><br>";
+$gwsel_sued = explode(PHP_EOL, $gwselsued);
+for($i = 0; $i < count($gwsel_sued); ++$i) {
+         echo "$gwsel_sued[$i]<br>";
 }
 
 $clients = file_get_contents('http://5.189.166.50/test.html');
 echo $clients;
-
-
 ?>
-
 
 <hr />
 </div>
+
 <div class=mrtg>
+
+<b>Speedtest der has und has-sued GWs (Kabel, wr-841, l2tp)</b>
+<img  src="http://163.172.161.233/top/img/speed.png"> 
+
+<hr />
+
 <H1>Durchsatz eth0</H1>
 <b>GW has</b>
 <img src="http://78.47.36.148/localhost_eth0-day.png">
 
 <b>GW has1</b>
-<img  src="img/ampelrot.jpg">
+<img  src="http://78.47.161.124/localhost_eth0-day.png">
 
 <b>GW has2</b>
 <img  src="http://5.189.166.50/localhost_eth0-day.png">
 
-<b>GW has3</b>
-<img  src="img/ampelrot.jpg">
+<br><b>GW has3 - kein mrtg</b><br>
 
 <b>GW roffl</b>
-<img  src="img/ampelrot.jpg">
+<img  src="http://5.189.142.26/localhost_eth0-day.png">
 
 <b>GW rola1</b>
 <img  src="http://163.172.161.233/mrtg/localhost_eth0-day.png">
 
 <hr />
 
-<b>Speedtest der has und has-sued GWs (Kabel, wr-841, l2tp)</b>
-<img  src="http://163.172.161.233/top/img/speed.png"> 
 
 </div>
 </div></div>
