@@ -2,14 +2,21 @@
 <div id="content">
 <?php
 $hostname = gethostname();
-echo "<h1 align=center>FFF Gateway $hostname</h1>";
-echo "<p align=center>Hoods: has und has-süd";
+echo "<h2 align=center>Hoods: has und has-süd </h2>";
 ?>
 
 <div class="ampel">
 <?php
 $l2tp = shell_exec('ip l | grep -c l2tp');
-echo "<b>Anzahl der l2tp Tunnel</b><br>has-sued: <b>$l2tp</b><br><br>";
+$fastd = shell_exec('sudo /var/www/html/has-mon/sensors/fastd-routers.sh | sort | uniq | wc -l');
+echo "<b>Anzahl der VPN-Router has-sued:</b><br>via l2tp: $l2tp<br>via fastd: $fastd<br><br>";
+
+
+$l2tps = file_get_contents('http://5.189.166.50/l2tp_routers');
+$fastds = file_get_contents('http://5.189.166.50/fastd_routers');
+$l2tp = str_word_count($l2tps);
+$fastd = str_word_count($fastds);
+echo "<b>Anzahl der VPN-Router has:</b><br>via l2tp: $l2tp<br>via fastd: $fastd<br><br>";
 
 $gwselsued = file_get_contents('http://10.50.60.22/bat0.dat');
 $gwselhas = file_get_contents('http://10.50.60.22/bat2.dat');
@@ -35,8 +42,8 @@ echo $clients;
 
 <div class=mrtg>
 
-<b>Speedtest has und has-sued (Kabel, wr-841, l2tp)</b>
-<img  src="http://163.172.161.233/top/img/speed.png"> 
+<b>Clients in has und has-sued</b>
+<img src="img/clients.png">
 
 <hr />
 
@@ -50,8 +57,9 @@ echo $clients;
 <b>GW has2</b>
 <img  src="http://5.189.166.50/localhost_eth0-day.png">
 
-<br><b>GW has3 - kein mrtg</b><br>
-
+<br><b>GW has3</b><br>
+<img src="http://213.136.93.106/localhost_eth0-day.png">
+ 
 <b>GW roffl</b>
 <img  src="http://5.189.142.26/localhost_eth0-day.png">
 

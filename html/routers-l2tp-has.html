@@ -1,10 +1,10 @@
 <div id="content">
-<H2>Router via l2tp in der has-sued</H2>
+<H2>Router via l2tp in der has-hood</H2>
 
 <?php
-$routers = shell_exec('sudo -n /var/www/html/has-mon/sensors/l2tp-routers.sh');
+$routers = file_get_contents('http://5.189.166.50/l2tp_routers');
 $router = explode(PHP_EOL, $routers);
-for($i = 1; $i < count($router); ++$i) {
+for($i = 0; $i < count($router); ++$i) {
         echo "<a href=\"https://monitoring.freifunk-franken.de/routers?q=^$router[$i]\$\">$router[$i]</a><br>";
 }
 --$i;
